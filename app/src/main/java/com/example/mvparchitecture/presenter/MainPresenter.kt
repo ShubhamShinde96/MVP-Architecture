@@ -2,8 +2,10 @@ package com.example.mvparchitecture.presenter
 
 import com.example.mvparchitecture.constracts.MainActivityContract
 import com.example.mvparchitecture.network.model.University
+import com.example.mvparchitecture.utils.launchOnMain
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class MainPresenter(
@@ -22,18 +24,18 @@ class MainPresenter(
     }
 
     override fun onDestroy() {
-        TODO("Not yet implemented")
+        scope.cancel()
     }
 
     override fun onLoading() {
-        TODO("Not yet implemented")
+        scope.launchOnMain { view.onLoading() }
     }
 
     override fun onError(message: String) {
-        TODO("Not yet implemented")
+        scope.launchOnMain { view.onError(message) }
     }
 
     override fun onSuccess(list: List<University>) {
-        TODO("Not yet implemented")
+        scope.launchOnMain { view.onSuccess(list) }
     }
 }
