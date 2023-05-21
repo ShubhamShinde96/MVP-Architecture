@@ -53,7 +53,10 @@ class MainActivity : AppCompatActivity(), MainActivityContract.View {
 
     private fun initView() {
 
+        val initialCountry = "India"
         binding.rvUniversityList.adapter = mainAdapter
+        binding.searchView.setQuery(initialCountry, false)
+        presenter.getUniversity(initialCountry)
     }
 
     override fun onLoading() {

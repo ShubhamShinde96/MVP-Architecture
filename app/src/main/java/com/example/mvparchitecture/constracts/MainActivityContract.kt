@@ -4,17 +4,6 @@ import com.example.mvparchitecture.network.model.University
 
 interface MainActivityContract {
 
-    interface View {
-        fun onLoading()
-        fun onSuccess(list: List<University>)
-        fun onError(message: String)
-    }
-
-    interface Presenter {
-        fun getUniversity(country: String)
-        fun onDestroy()
-    }
-
     interface Model {
 
         interface OnFinishListener {
@@ -24,6 +13,17 @@ interface MainActivityContract {
         }
 
         suspend fun fetchUniversity(onFinishListener: OnFinishListener, country: String)
+    }
+
+    interface View {
+        fun onLoading()
+        fun onSuccess(list: List<University>)
+        fun onError(message: String)
+    }
+
+    interface Presenter {
+        fun getUniversity(country: String)
+        fun onDestroy()
     }
 
 }

@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("")
+    @GET("/search")
     suspend fun getUniversity(
         @Query("country") country: String
     ): Response<List<University>>
